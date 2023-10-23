@@ -1,0 +1,32 @@
+.widget-dashboard {
+    height: 100%;
+}
+
+.container-notification-list {
+    max-height: 25rem;
+    width: 30rem;
+}
+
+.custom-dropdown-item {
+  /* Your default styles */
+  background-color: white; /* Custom background color */
+  /* Add any other styles as needed */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Display an ellipsis (...) for overflowed text */
+   /* Your default styles */
+   background-color: white; /* Custom background color */
+   /* Add any other styles as needed */
+   white-space: normal; /* Allow text to wrap */
+   overflow: hidden;
+   text-overflow: ellipsis; /* Display an ellipsis (...) for overflowed text */
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* Number of lines to show before ellipsis (adjust as needed) */
+   -webkit-box-orient: vertical;
+}
+
+.custom-dropdown-item-hover {
+    /* Your hover styles */
+    background-color: #dfdfdf; /* Custom hover background color */
+    /* Add any other hover styles as needed */
+}
+

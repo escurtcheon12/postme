@@ -1,0 +1,35 @@
+.button-csv-users, .button-filter-users, .button-edit-users, .button-search-users, .button-tambah-users, .button-edit-users {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-password-users {
+    width: 5rem !important;
+}
+
+/* .input-date-users {
+    width: 2rem;
+} */
+
+.input-email-users {
+    width: 7rem;
+}
+
+/* .pagination {
+    color:#149CE3 !important;
+} */
+
+.pagination .page-link {
+    background-color: #149CE3;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    border-color: #149CE3;
+    background-color: white;
+    color: #149CE3 !important;
+  }
+
+.action-input-users {
+    display: flex;
+}

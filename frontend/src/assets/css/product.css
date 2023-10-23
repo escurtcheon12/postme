@@ -1,0 +1,132 @@
+.list-square-right-product-list {
+    height: 2.3rem;
+}
+
+.input-stock-list {
+    width: 7rem;
+}
+
+.button-square-product-list {
+    cursor: zoom-in !important;
+}
+
+.modal-img-list {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-product-list-before {
+    width: 100%;
+}
+
+.square-left-list-before {
+    width: 100%;
+}
+
+.card-product-list-after {
+    width: 100%;
+}
+
+.square-left-list-after {
+    width: 70%;
+}
+
+.square-right-list {
+    width: 50%;
+}
+
+.container-stock-list {
+    width: 2rem;
+    padding-right: 5rem;
+}
+
+.input-cart-stock-list {
+    width: 4.2rem;
+    margin-right: 2rem;
+    padding-right: 1rem;
+    /* padding-right: 3rem; */
+    /* margin-right: 10rem; */
+}
+
+.input-cart-unit-list {
+    width: 4rem !important;
+}
+
+.button-csv-product, .button-filter-product, .button-edit-product, .button-search-product, .button-tambah-product, .button-edit-product, .button-save-product {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-deskripsi-product {
+    width: 20rem;
+}
+
+.place-upload-add-product, .container-img-product {
+    height: 15rem;
+    border: .1rem dashed #149CE3;
+}
+
+.modal-img-product {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pagination {
+    margin: 15px auto;
+    display: flex;
+    list-style: none;
+    outline: none;
+   
+  }
+  
+  .pagination > .active > a {
+    background-color: white;
+    border-color: white;
+    color: #149CE3;
+  }
+  
+  .pagination > li > a {
+    background-color: #149CE3;
+    border: 1px solid white;
+    margin: .1rem .1rem;
+    color: black;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .pagination > .active > a,
+  .pagination > .active > span,
+  .pagination > .active > a:hover,
+  .pagination > .active > span:hover,
+  .pagination > .active > a:focus,
+  .pagination > .active > span:focus {
+    background-color: white;
+    border-color: #149CE3;
+    outline: none;
+  }
+  
+  .pagination > li > a,
+  .pagination > li > span {
+    color: white;
+  }
+  
+  .pagination > li:first-child > a,
+  .pagination > li:first-child > span,
+  .pagination > li:last-child > a,
+  .pagination > li:last-child > span {
+    border-radius: unset;
+  }
+
+  .button-conversion,.button-add-konversi {
+    background-color: #149CE3;
+    color: white;
+  }
+
+  .button-edit-conversion {
+    background-color: #149CE3;
+  }
+
+

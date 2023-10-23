@@ -1,0 +1,54 @@
+
+.base-bg-color {
+    background-color: #149CE3;
+}
+
+
+.base-text-color {
+    color: #149CE3;
+}
+
+.logo-login {
+    background-image: url('../img/logo.svg');
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 66px;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-container-login {
+    background-color: #149CE3;
+}
+
+.button-login {
+    width: 100%;
+    height: 2.5rem;
+}
+
+.container-checkbox-login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-login {
+    width: 15px;
+    height: 20px;
+    position: relative;
+    top: -0.3rem;
+    margin-right: 0.5rem;
+}
+
+.lupa-password-login {
+    position: relative;
+    top: -0.5rem;
+}
+
+.p-link {
+    color: #149CE3;
+}
+
+.input-password-forgot_password {
+    width: 20rem;
+    background-color: #149CE3;
+}

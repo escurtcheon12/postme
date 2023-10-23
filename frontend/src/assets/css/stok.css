@@ -1,0 +1,28 @@
+.button-csv-stock, .button-filter-stock, .button-edit-stock, .button-search-stock, .button-tambah-stock, .button-edit-stock, .button-csv-stock {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-deskripsi-stock {
+    width: 20rem;
+}
+
+.pagination .page-link {
+    background-color: #149CE3;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    border-color: #149CE3;
+    background-color: white;
+    color: #149CE3 !important;
+  }
+
+  .stock-field-suppliers {
+    width: 10rem;
+  }
+
+  .stock-field-stock-before, .stock-field-stock-after {
+    width: 1rem;
+  }
+

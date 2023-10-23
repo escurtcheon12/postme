@@ -1,0 +1,23 @@
+.button-csv-customers, .button-filter-customers, .button-edit-customers, .button-search-customers, .button-tambah-customers, .button-edit-customers {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-alamat-customers {
+    width: 20rem;
+}
+
+.pagination {
+    color:#149CE3 !important;
+}
+
+.pagination .page-link {
+    background-color: #149CE3;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    border-color: #149CE3;
+    background-color: white;
+    color: #149CE3 !important;
+  }

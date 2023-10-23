@@ -1,0 +1,20 @@
+.button-csv-category, .button-filter-category, .button-edit-category, .button-search-category, .button-tambah-category, .button-edit-category, .button-view-order {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-deskripsi-categories {
+    width: 20rem;
+}
+
+.pagination .page-link {
+    background-color: #149CE3;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    border-color: #149CE3;
+    background-color: white;
+    color: #149CE3 !important;
+  }
+

@@ -1,0 +1,9 @@
+@media print {
+    @page {
+        size: landscape;
+      }
+
+    p, td {
+      font-size: 12px;
+    }
+  }

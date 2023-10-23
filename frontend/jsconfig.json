@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node"
+  },
+  "include": ["src", "public/firebase-messaging-sw.js"]
+}

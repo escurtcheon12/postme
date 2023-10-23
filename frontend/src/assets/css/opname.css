@@ -1,0 +1,20 @@
+.button-csv-opname, .button-filter-opname, .button-edit-opname, .button-search-opname, .button-tambah-opname, .button-edit-opname, .button-views-opname {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-deskripsi-opname {
+    width: 20rem;
+}
+
+.pagination .page-link {
+    background-color: #149CE3;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    border-color: #149CE3;
+    background-color: white;
+    color: #149CE3 !important;
+  }
+

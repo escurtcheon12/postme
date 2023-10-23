@@ -1,0 +1,19 @@
+.button-csv-suppliers, .button-filter-suppliers, .button-edit-suppliers, .button-search-suppliers, .button-tambah-suppliers, .button-edit-suppliers {
+    background-color: #149CE3;
+    color: white;
+}
+
+.input-deskripsi-suppliers {
+    width: 20rem;
+}
+
+.pagination .page-link {
+    background-color: #149CE3;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    border-color: #149CE3;
+    background-color: white;
+    color: #149CE3 !important;
+  }
