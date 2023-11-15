@@ -2,7 +2,6 @@
 
 const bcrypt = require('bcryptjs')
 const { helpers } = require("../../helpers");
-const message = require("../../helpers/message");
 const nodemailer = require("../../libraries/nodemailer.library");
 const jwt = require("jsonwebtoken");
 const repository = require("../../repositories/index");

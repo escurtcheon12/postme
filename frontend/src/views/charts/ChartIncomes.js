@@ -5,6 +5,8 @@ import { formatRupiah } from "src/shared/utils";
 const brandInfo = getStyle("info") || "#20a8d8";
 
 const ChartIncomes = ({ data, data_description }) => {
+  console.log("data", data);
+  console.log("description", data_description);
   const maxIncome = data.length > 0 ? Math.max(...data) : 10;
 
   const defaultOptions = (() => {

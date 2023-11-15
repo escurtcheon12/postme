@@ -49,9 +49,9 @@ services:
       - EMAIL=rizkysyahroni100@gmail.com
       - PASSWORD=kkxrplftlyhffzdn
       - NODE_ENV=development
-    # networks:
-    #   - my_final_project
-    # command: npx --max-old-space-size=2048 nodemon server.js
+    networks:
+      - my_final_project
+    command: npx nodemon server.js
 
 volumes:
   mysql_data:

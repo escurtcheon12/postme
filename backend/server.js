@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const app = express();
@@ -22,7 +21,7 @@ db_sequelize.sequelize
   });
 
 app.use(cors());
-app.use(logger(config.isProd ? "combined" : "dev"));
+// app.use(logger(config.isProd ? "combined" : "dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -35,24 +34,20 @@ app.use(function (req, res, next) {
   next();
 });
 
-// catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error("Not Found");
   err.status = 404;
   next(err);
 });
 
-// error handler
-app.use((err, req, res, next) => {path
-  // set locals, only providing error in development
-  res.locals.message = err.message; // eslint-disable-line no-param-reassign
-  res.locals.error = config.isDev ? err : {}; // eslint-disable-line no-param-reassign
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
+// app.use((err, req, res, next) => {
+//   path;
+//   res.locals.message = err.message; 
+//   res.locals.error = config.isDev ? err : {}; 
+//   res.status(err.status || 500);
+//   res.render("error");
+// });
 
-// start server
 async function startServer() {
   app.listen(config.server.port, (err) => {
     if (err) {

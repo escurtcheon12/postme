@@ -82,7 +82,7 @@ const ListProduct = () => {
   const [itemOffset, setItemOffset] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [statusPagination, setStatusPagination] = useState(false);
-  
+
   const [data, setData] = useState({
     id: 0,
     stocks_id: 0,

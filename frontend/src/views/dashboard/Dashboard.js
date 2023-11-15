@@ -120,110 +120,138 @@ const Dashboard = () => {
     })();
   }, [selectFilter]);
 
-  const operateDatasetLogic = (data_array, selectFilter, key) => {
+  const conditionDataSetLogic = (
+    data_process,
+    select_filter,
+    data,
+    data_description,
+    key_data
+  ) => {
+    let num_to_backward;
+
+    switch (select_filter) {
+      case "Month":
+        num_to_backward = 11;
+        break;
+      case "Year":
+        num_to_backward = 4;
+        break;
+      default:
+        num_to_backward = 6;
+        break;
+    }
+
+    for (let i = num_to_backward; i >= 0; i--) {
+      let find_data_by_date;
+      let logic_find_by_date;
+
+      switch (select_filter) {
+        case "Month":
+          find_data_by_date =
+            data.find(
+              (item) =>
+                new Date(item.createdAt).toJSON().slice(0, 7) ==
+                substractDate(new Date(), i, select_filter).toJSON().slice(0, 7)
+            ) || null;
+          logic_find_by_date = convertTimeToIndonesiaMonth(
+            substractDate(new Date(), i, select_filter).getMonth()
+          );
+
+          break;
+        case "Year":
+          find_data_by_date =
+            data.find(
+              (item) =>
+                new Date(item.createdAt).toJSON().slice(0, 4) ==
+                substractDate(new Date(), i, select_filter).toJSON().slice(0, 4)
+            ) || null;
+          logic_find_by_date = substractDate(
+            new Date(),
+            i,
+            select_filter
+          ).getFullYear();
+
+          break;
+        default:
+          find_data_by_date =
+            data.find(
+              (item) =>
+                new Date(item.createdAt).toJSON().slice(0, 10) ==
+                substractDate(new Date(), i, select_filter)
+                  .toJSON()
+                  .slice(0, 10)
+            ) || null;
+
+          logic_find_by_date = convertTimeToIndonesiaDay(
+            substractDate(new Date(), i),
+            select_filter
+          );
+
+          break;
+      }
+
+      if (find_data_by_date) {
+        data_description.push(logic_find_by_date);
+        data_process.push(find_data_by_date[key_data]);
+      } else {
+        data_description.push(logic_find_by_date);
+        data_process.push(0);
+      }
+    }
+  };
+
+  const operateDataSetLogic = (data, select_filter, key_data) => {
     let data_description = [];
-    let data = [];
+    let data_process = [];
 
-    if (selectFilter === "Month") {
-      for (let i = 11; i >= 0; i--) {
-        let findDataByDate =
-          data_array.find(
-            (item) =>
-              new Date(item.createdAt).toJSON().slice(0, 7) ==
-              substractDate(new Date(), i, selectFilter).toJSON().slice(0, 7)
-          ) || null;
+    if (select_filter === "Month") {
+      conditionDataSetLogic(
+        data_process,
+        select_filter,
+        data,
+        data_description,
+        key_data
+      );
 
-        if (findDataByDate) {
-          data_description = [
-            ...data_description,
-            convertTimeToIndonesiaMonth(
-              substractDate(new Date(), i, selectFilter).getMonth()
-            ),
-          ];
-          data = [...data, findDataByDate[key]];
-        } else {
-          data_description = [
-            ...data_description,
-            convertTimeToIndonesiaMonth(
-              substractDate(new Date(), i, selectFilter).getMonth()
-            ),
-          ];
-          data = [...data, 0];
-        }
-      }
+      data_description = [...data_description, data_description[0]];
+      data_description.shift();
 
-      return [data_description.reverse(), data, data_array];
-    } else if (selectFilter === "Year") {
-      for (let i = 4; i >= 0; i--) {
-        let findDataByDate =
-          data_array.find(
-            (item) =>
-              new Date(item.createdAt).toJSON().slice(0, 4) ==
-              substractDate(new Date(), i, selectFilter).toJSON().slice(0, 4)
-          ) || null;
+      return [data_description, data_process, data];
+    } else if (select_filter === "Year") {
+      conditionDataSetLogic(
+        data_process,
+        select_filter,
+        data,
+        data_description,
+        key_data
+      );
 
-        if (findDataByDate) {
-          data_description = [
-            ...data_description,
-            substractDate(new Date(), i, selectFilter).getFullYear(),
-          ];
-          data = [...data, findDataByDate[key]];
-        } else {
-          data_description = [
-            ...data_description,
-            substractDate(new Date(), i, selectFilter).getFullYear(),
-          ];
-          data = [...data, 0];
-        }
-      }
-
-      return [data_description, data, data_array];
+      return [data_description, data_process, data];
     } else {
-      for (let i = 6; i >= 0; i--) {
-        let findDataByDate =
-          data_array.find(
-            (item) =>
-              new Date(item.createdAt).toJSON().slice(0, 10) ==
-              substractDate(new Date(), i, selectFilter).toJSON().slice(0, 10)
-          ) || null;
+      conditionDataSetLogic(
+        data_process,
+        select_filter,
+        data,
+        data_description,
+        key_data
+      );
 
-        if (findDataByDate) {
-          data_description = [
-            ...data_description,
-            convertTimeToIndonesiaDay(
-              substractDate(new Date(), i),
-              selectFilter
-            ),
-          ];
-          data = [...data, findDataByDate[key]];
-        } else {
-          data_description = [
-            ...data_description,
-            convertTimeToIndonesiaDay(
-              substractDate(new Date(), i),
-              selectFilter
-            ),
-          ];
-          data = [...data, 0];
-        }
-      }
-
-      return [data_description, data, data_array];
+      return [data_description, data_process, data];
     }
   };
 
   const maxTotalOrders =
-    operateDatasetLogic(dataOrders, selectFilter, "total_orders")[1].length > 0
+    operateDataSetLogic(dataOrders, selectFilter, "total_orders")[1].length > 0
       ? Math.max(
-          ...operateDatasetLogic(dataOrders, selectFilter, "total_orders")[1]
+          ...operateDataSetLogic(dataOrders, selectFilter, "total_orders")[1]
         )
       : 10;
 
   const maxTotalCustomers =
-    operateDatasetLogic(dataCustomers, selectFilter, "total_customers")[1]
+    operateDataSetLogic(dataCustomers, selectFilter, "total_customers")[1]
       .length > 0
       ? Math.max(
-          ...operateDatasetLogic(
+          ...operateDataSetLogic(
             dataCustomers,
             selectFilter,
             "total_customers"
@@ -232,17 +260,17 @@ const Dashboard = () => {
       : 10;
 
   const maxTotalDebts =
-    operateDatasetLogic(dataDebts, selectFilter, "total_debts")[1].length > 0
+    operateDataSetLogic(dataDebts, selectFilter, "total_debts")[1].length > 0
       ? Math.max(
-          ...operateDatasetLogic(dataDebts, selectFilter, "total_debts")[1]
+          ...operateDataSetLogic(dataDebts, selectFilter, "total_debts")[1]
         )
       : 10;
 
   const maxTotalProducts =
-    operateDatasetLogic(dataProducts, selectFilter, "total_products")[1]
+    operateDataSetLogic(dataProducts, selectFilter, "total_products")[1]
       .length > 0
       ? Math.max(
-          ...operateDatasetLogic(
+          ...operateDataSetLogic(
             dataProducts,
             selectFilter,
             "total_products"
@@ -289,10 +317,10 @@ const Dashboard = () => {
           </CRow>
           <ChartIncomes
             data={
-              operateDatasetLogic(dataIncomes, selectFilter, "total_incomes")[1]
+              operateDataSetLogic(dataIncomes, selectFilter, "total_incomes")[1]
             }
             data_description={
-              operateDatasetLogic(dataIncomes, selectFilter, "total_incomes")[0]
+              operateDataSetLogic(dataIncomes, selectFilter, "total_incomes")[0]
             }
             style={{ height: "300px", marginTop: "40px" }}
           />
@@ -310,7 +338,7 @@ const Dashboard = () => {
                   {
                     label: "Total",
                     backgroundColor: "#2f8fe9",
-                    data: operateDatasetLogic(
+                    data: operateDataSetLogic(
                       dataOrders,
                       selectFilter,
                       "total_orders"
@@ -318,7 +346,7 @@ const Dashboard = () => {
                   },
                 ]}
                 labels={
-                  operateDatasetLogic(
+                  operateDataSetLogic(
                     dataOrders,
                     selectFilter,
                     "total_orders"
@@ -365,7 +393,7 @@ const Dashboard = () => {
                   {
                     label: "Total",
                     backgroundColor: "#2f8fe9",
-                    data: operateDatasetLogic(
+                    data: operateDataSetLogic(
                       dataCustomers,
                       selectFilter,
                       "total_customers"
@@ -373,7 +401,7 @@ const Dashboard = () => {
                   },
                 ]}
                 labels={
-                  operateDatasetLogic(
+                  operateDataSetLogic(
                     dataCustomers,
                     selectFilter,
                     "total_customers"
@@ -423,7 +451,7 @@ const Dashboard = () => {
                   {
                     label: "Total",
                     backgroundColor: "#2f8fe9",
-                    data: operateDatasetLogic(
+                    data: operateDataSetLogic(
                       dataDebts,
                       selectFilter,
                       "total_debts"
@@ -431,7 +459,7 @@ const Dashboard = () => {
                   },
                 ]}
                 labels={
-                  operateDatasetLogic(dataDebts, selectFilter, "total_debts")[0]
+                  operateDataSetLogic(dataDebts, selectFilter, "total_debts")[0]
                 }
                 options={{
                   tooltips: {
@@ -475,7 +503,7 @@ const Dashboard = () => {
                   {
                     label: "Total",
                     backgroundColor: "#2f8fe9",
-                    data: operateDatasetLogic(
+                    data: operateDataSetLogic(
                       dataProducts,
                       selectFilter,
                       "total_products"
@@ -483,7 +511,7 @@ const Dashboard = () => {
                   },
                 ]}
                 labels={
-                  operateDatasetLogic(
+                  operateDataSetLogic(
                     dataProducts,
                     selectFilter,
                     "total_products"
