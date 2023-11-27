@@ -17,11 +17,10 @@ db_sequelize.sequelize
     Logger.info(res.models, "Synced db.");
   })
   .catch((err) => {
-    Logger.error("Failed to sync db: " + err.message);
+    Logger.warning("Failed to sync db: " + err.message);
   });
 
 app.use(cors());
-// app.use(logger(config.isProd ? "combined" : "dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -34,19 +33,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use((req, res, next) => {
-  const err = new Error("Not Found");
-  err.status = 404;
+app.use((err, req, res, next) => {
+  res
+    .status(err.status || 500)
+    .json({ error: err.message || "Internal Server Error" });
   next(err);
 });
-
-// app.use((err, req, res, next) => {
-//   path;
-//   res.locals.message = err.message; 
-//   res.locals.error = config.isDev ? err : {}; 
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
 
 async function startServer() {
   app.listen(config.server.port, (err) => {

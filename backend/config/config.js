@@ -19,7 +19,6 @@ const config = {
       password: process.env.DB_PASSWORD || "kaneki123",
       port: process.env.DB_PORT || 3306,
       database: process.env.DB_NAME || "db_final_project",
-      // connectionLimit: process.env.DBLIMIT || 10,
     },
   },
 
@@ -34,7 +33,6 @@ const config = {
       password: process.env.DB_PASSWORD || "kaneki123",
       port: process.env.DB_PORT || 3306,
       database: process.env.DB_NAME || "db_final_project",
-      // connectionLimit: process.env.DBLIMIT || 10,
     },
   },
 };

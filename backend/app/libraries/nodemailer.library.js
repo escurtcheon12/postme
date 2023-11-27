@@ -2,6 +2,7 @@
 
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
+const logger = require("./logger.library");
 dotenv.config();
 
 let library = {
@@ -23,10 +24,10 @@ let library = {
         text: message,
       });
 
-      console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      logger.info("Message sent: %s", info.messageId);
+      logger.info("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     } catch (err) {
-      console.log(err);
+      logger.error(err);
     }
   },
 };
